@@ -1,10 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Focus Work</title>
 </head>
 <body>
+<body class="page">
+
+  <header class="header">
+    <div class="header__inner container">
+      <a href="#inicio" class="logo">
+        <span class="logo__mark">⏱</span>
+        <span class="logo__text">Focus Work</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#inicio" class="nav__link nav__link--active">Inicio</a></li>
+          <li class="nav__item"><a href="#caracteristicas" class="nav__link">Características</a></li>
+          <li class="nav__item"><a href="#testimonios" class="nav__link">Opiniones</a></li>
+          <li class="nav__item"><a href="#planes" class="nav__link">Planes</a></li>
+          <li class="nav__item"><a href="#contacto" class="nav__link nav__link--disabled" aria-disabled="true">Blog</a></li>
+        </ul>
+      </nav>
+
+      <a href="#planes" class="button button--small header__cta">Empezar gratis</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__content container">
+        <h1 class="hero__title">Trabaja en ciclos de 25 minutos y termina más en menos tiempo.</h1>
+        <p class="hero__subtitle">Focus Work divide tu jornada en bloques de enfoque y descanso para que avances sin agotarte.</p>
+        <a href="#planes" class="button button--large">Probar Focus Work</a>
+      </div>
+    </section>
+          <section class="section" id="caracteristicas">
+      <div class="container">
+        <h2 class="section__title">Todo lo que necesitas para enfocarte</h2>
+        <p class="section__lead">Tres herramientas simples para que cada sesión de trabajo cuente.</p>
+
+        <div class="section__grid section__grid--3">
+          <article class="feature-card feature-card--featured">
+            <span class="feature-card__icon" aria-hidden="true">⏱</span>
+            <h3 class="feature-card__title">Temporizador de ciclos</h3>
+            <p class="feature-card__text">25 minutos de trabajo y 5 de descanso, con aviso sonoro al cambiar de fase. Tú ajustas la duración.</p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">📊</span>
+            <h3 class="feature-card__title">Estadísticas de tu día</h3>
+            <p class="feature-card__text">Mira cuántos ciclos completaste y en qué horas rindes más.</p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">🔕</span>
+            <h3 class="feature-card__title">Modo sin distracciones</h3>
+            <p class="feature-card__text">Silencia las notificaciones mientras dura cada ciclo de enfoque.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="testimonios">
+      <div class="container">
+        <h2 class="section__title">Lo que dicen quienes ya lo usan</h2>
+
+        <div class="section__grid section__grid--3">
+          <blockquote class="testimonial testimonial--highlight">
+            <p class="testimonial__text">Pasé de distraerme cada diez minutos a terminar mis entregas antes del viernes.</p>
+            <footer class="testimonial__author">
+              <span class="avatar avatar--large">LM</span>
+              <span class="testimonial__meta">
+                <strong class="testimonial__name">Laura Mejía</strong>
+                <span class="testimonial__role">Estudiante de ingeniería</span>
+              </span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial">
+            <p class="testimonial__text">Las estadísticas me mostraron que rindo más por la mañana. Reorganicé mi agenda.</p>
+            <footer class="testimonial__author">
+              <span class="avatar">JR</span>
+              <span class="testimonial__meta">
+                <strong class="testimonial__name">Juan Restrepo</strong>
+                <span class="testimonial__role">Diseñador freelance</span>
+              </span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial testimonial--compact">
+            <p class="testimonial__text">Usamos Focus Work en todo el equipo y las reuniones bajaron a la mitad.</p>
+            <footer class="testimonial__author">
+              <span class="avatar avatar--alt">SG</span>
+              <span class="testimonial__meta">
+                <strong class="testimonial__name">Sara Gómez</strong>
+                <span class="testimonial__role">Líder de producto</span>
+              </span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+          <section class="section" id="planes">
+      <div class="container">
+        <h2 class="section__title">Planes</h2>
+        <p class="section__lead">Empieza gratis y cambia de plan cuando lo necesites.</p>
+
+        <div class="section__grid section__grid--3">
+          <article class="pricing-card">
+            <h3 class="pricing-card__name">Gratis</h3>
+            <p class="pricing-card__price">$0<span class="pricing-card__period">/mes</span></p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Temporizador de ciclos</li>
+              <li class="pricing-card__item">Estadísticas de 7 días</li>
+              <li class="pricing-card__item pricing-card__item--off">Modo sin distracciones</li>
+            </ul>
+            <a href="#contacto" class="button button--outline">Empezar</a>
+          </article>
+
+          <article class="pricing-card pricing-card--recommended">
+            <span class="pricing-card__badge">Más elegido</span>
+            <h3 class="pricing-card__name">Pro</h3>
+            <p class="pricing-card__price">$6<span class="pricing-card__period">/mes</span></p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Temporizador de ciclos</li>
+              <li class="pricing-card__item">Estadísticas ilimitadas</li>
+              <li class="pricing-card__item">Modo sin distracciones</li>
+            </ul>
+            <a href="#contacto" class="button">Empezar</a>
+          </article>
+
+          <article class="pricing-card">
+            <h3 class="pricing-card__name">Equipos</h3>
+            <p class="pricing-card__price">$4<span class="pricing-card__period">/usuario</span></p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Todo lo de Pro</li>
+              <li class="pricing-card__item">Panel de equipo</li>
+              <li class="pricing-card__item">Soporte prioritario</li>
+            </ul>
+            <a href="#contacto" class="button button--outline">Empezar</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="contacto">
+      <div class="container container--narrow">
+        <h2 class="section__title">Escríbenos</h2>
+
+        <form class="form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="nombre">Nombre</label>
+            <input class="form__input" id="nombre" name="nombre" type="text" required>
+            <p class="form__error">Escribe tu nombre.</p>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="email">Correo</label>
+            <input class="form__input" id="email" name="email" type="email" required>
+            <p class="form__error">Escribe un correo válido, por ejemplo nombre@correo.com.</p>
+          </div>
+
+          <div class="form__field">
+            <label class="form__label" for="mensaje">Mensaje</label>
+            <textarea class="form__input form__input--textarea" id="mensaje" name="mensaje" rows="4" required></textarea>
+            <p class="form__error">Cuéntanos en qué podemos ayudarte.</p>
+          </div>
+
+          <button type="submit" class="button form__submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+    <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__col">
+        <a href="#inicio" class="logo logo--light"> 
+          <span class="logo__mark">⏱</span>
+          <span class="logo__text">Focus Work</span>
+        </a>
+        <address class="footer__contact">
+          hola@focuswork.com<br>
+          +57 300 000 0000
+        </address>
+      </div>
+
+      <ul class="footer__links">
+        <li><a href="#caracteristicas" class="footer__link">Características</a></li>
+        <li><a href="#planes" class="footer__link">Planes</a></li>
+        <li><a href="#contacto" class="footer__link">Contacto</a></li>
+      </ul>
+
+      <ul class="social">
+        <li class="social__item"><a href="#" class="social__link" aria-label="Instagram">IG</a></li>
+        <li class="social__item"><a href="#" class="social__link" aria-label="LinkedIn">IN</a></li>
+        <li class="social__item"><a href="#" class="social__link" aria-label="X">X</a></li>
+      </ul>
+    </div>
+
+    <p class="footer__copy">© 2026 Focus Work. Todos los derechos reservados.</p>
+  </footer>
+<script>
+  document.querySelector('.form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var todoOk = true;
+
+    this.querySelectorAll('.form__field').forEach(function (campo) {
+      var input = campo.querySelector('.form__input');
+      var invalido = !input.checkValidity() || !input.value.trim();
+      campo.classList.toggle('form__field--error', invalido);
+      if (invalido) todoOk = false;
+    });
+
+    if (todoOk) {
+      this.reset();
+      alert('Mensaje enviado. Te respondemos pronto.');
+    }
+  });
+</script>
+</body>
 
 </body>
 </html>

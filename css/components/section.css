@@ -1,0 +1,27 @@
+.section {
+  padding-block: 5rem;
+}
+
+.section--alt {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.section__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.section__lead {
+  margin: 0 0 2.5rem;
+  opacity: 0.75;
+}
+
+.section__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section__grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}

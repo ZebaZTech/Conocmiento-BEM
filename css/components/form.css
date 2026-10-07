@@ -1,0 +1,48 @@
+.form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #aaa;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+}
+
+.form__input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form__input--textarea {
+  resize: vertical;
+}
+
+.form__error {
+  display: none;
+  margin: 0.35rem 0 0;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+.form__field--error .form__input {
+  border-color: var(--color-primary);
+  background: #fdf0ee;
+}
+
+.form__field--error .form__error {
+  display: block;
+}
+
+.form__submit {
+  justify-self: start;
+}

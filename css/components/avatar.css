@@ -1,0 +1,23 @@
+.avatar {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.avatar--large {
+  width: 60px;
+  height: 60px;
+  font-size: 1.1rem;
+}
+
+.avatar--alt {
+  background: var(--color-accent);
+  border-radius: 30%;
+}
