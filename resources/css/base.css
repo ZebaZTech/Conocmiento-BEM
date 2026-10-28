@@ -1,0 +1,18 @@
+:root {
+  --color-primary:#c0392b ;
+  --color-accent: #ffd500;
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --font-main: Arial;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body.page {
+  margin: 0;
+  font-family: var(--font-main);
+ color: var(--color-text);
+ background: var(--color-bg);
+}

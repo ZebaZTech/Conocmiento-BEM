@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.logo__mark {
+  color: var(--color-accent);
+}
+
+.logo--light {
+  color: white;
+}
