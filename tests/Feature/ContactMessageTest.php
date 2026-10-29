@@ -84,3 +84,18 @@ test('contact form validates the submitted data', function () {
     $response->assertSessionHasErrors(['name', 'email', 'message']);
     $this->assertDatabaseCount('contact_messages', 0);
 });
+
+test('contact form validation errors are shown in spanish', function () {
+    $response = $this->from(route('contacto'))->post(route('contacto.store'), [
+        'name' => '',
+        'email' => 'correo-invalido',
+        'message' => '',
+    ]);
+
+    $response->assertRedirect(route('contacto'));
+    $response->assertSessionHasErrors([
+        'name' => 'El campo nombre es obligatorio.',
+        'email' => 'El campo correo debe ser una dirección de correo válida.',
+        'message' => 'El campo mensaje es obligatorio.',
+    ]);
+});
