@@ -8,7 +8,7 @@ test('guests are redirected from admin testimonials', function () {
 });
 
 test('initials are calculated with multibyte characters', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
 
     $response = $this->actingAs($user)->post(route('admin.testimonials.store'), [
         'name' => 'Ángela Pérez',
@@ -26,7 +26,7 @@ test('initials are calculated with multibyte characters', function () {
 });
 
 test('auth user can create a testimonial', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $response = $this->actingAs($user)->post(route('admin.testimonials.store'), [
         'name' => 'Test User',
         'role' => 'Tester',
@@ -39,7 +39,7 @@ test('auth user can create a testimonial', function () {
 });
 
 test('auth user can update a testimonial', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $testimonial = Testimonial::factory()->create();
     $response = $this->actingAs($user)->put(route('admin.testimonials.update', $testimonial), [
         'name' => 'Updated Name',
@@ -53,7 +53,7 @@ test('auth user can update a testimonial', function () {
 });
 
 test('auth user can delete a testimonial', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $testimonial = Testimonial::factory()->create();
     $response = $this->actingAs($user)->delete(route('admin.testimonials.destroy', $testimonial));
     $response->assertRedirect(route('admin.testimonials.index'));

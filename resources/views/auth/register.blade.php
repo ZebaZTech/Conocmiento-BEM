@@ -15,6 +15,17 @@
         </div>
 
         <div class="mb-3">
+            <x-input-label for="plan_id" :value="__('Plan')" />
+            <select id="plan_id" name="plan_id" class="form-select mt-1 @error('plan_id') is-invalid @enderror">
+                <option value="">Gratis (por defecto)</option>
+                @foreach($plans as $plan)
+                    <option value="{{ $plan->id }}" @selected(old('plan_id') == $plan->id)>{{ $plan->name }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('plan_id')" class="mt-1" />
+        </div>
+
+        <div class="mb-3">
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" class="mt-1 @error('password') is-invalid @enderror" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-1" />

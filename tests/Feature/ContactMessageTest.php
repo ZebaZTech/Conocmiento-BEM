@@ -20,7 +20,7 @@ test('guests are redirected from admin contact message destroy', function () {
 });
 
 test('auth user can list contact messages', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $contactMessage = ContactMessage::factory()->create([
         'name' => 'Ana Torres',
         'email' => 'ana@example.com',
@@ -34,7 +34,7 @@ test('auth user can list contact messages', function () {
 });
 
 test('auth user can view a contact message', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $contactMessage = ContactMessage::factory()->create([
         'message' => 'Necesito ayuda con mi plan.',
     ]);
@@ -48,7 +48,7 @@ test('auth user can view a contact message', function () {
 });
 
 test('auth user can delete a contact message', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
     $contactMessage = ContactMessage::factory()->create();
 
     $response = $this->actingAs($user)->delete(route('admin.contact-messages.destroy', $contactMessage));
@@ -70,6 +70,21 @@ test('contact form stores a message', function () {
         'name' => 'Carlos Ruiz',
         'email' => 'carlos@example.com',
         'message' => 'Quiero saber más sobre Focus Work.',
+    ]);
+});
+
+test('contact form stores the authenticated user id', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)->post(route('contacto.store'), [
+        'name' => 'Usuario Autenticado',
+        'email' => 'autenticado@example.com',
+        'message' => 'Mensaje con sesión iniciada.',
+    ]);
+
+    $this->assertDatabaseHas('contact_messages', [
+        'user_id' => $user->id,
+        'email' => 'autenticado@example.com',
     ]);
 });
 

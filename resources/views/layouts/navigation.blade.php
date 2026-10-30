@@ -15,21 +15,28 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('admin.plans.index')" :active="request()->routeIs('admin.plans.*')">
-                        {{ __('Planes') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('admin.testimonials.index')" :active="request()->routeIs('admin.testimonials.*')">
-                        {{ __('Testimonios') }}
-                    </x-nav-link>
-                </li>
-                <li class="nav-item">
-                    <x-nav-link :href="route('admin.contact-messages.index')" :active="request()->routeIs('admin.contact-messages.*')">
-                        {{ __('Mensajes') }}
-                    </x-nav-link>
-                </li>
+                @if (auth()->user()->is_admin)
+                    <li class="nav-item">
+                        <x-nav-link :href="route('admin.plans.index')" :active="request()->routeIs('admin.plans.*')">
+                            {{ __('Planes') }}
+                        </x-nav-link>
+                    </li>
+                    <li class="nav-item">
+                        <x-nav-link :href="route('admin.testimonials.index')" :active="request()->routeIs('admin.testimonials.*')">
+                            {{ __('Testimonios') }}
+                        </x-nav-link>
+                    </li>
+                    <li class="nav-item">
+                        <x-nav-link :href="route('admin.contact-messages.index')" :active="request()->routeIs('admin.contact-messages.*')">
+                            {{ __('Mensajes') }}
+                        </x-nav-link>
+                    </li>
+                    <li class="nav-item">
+                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.*')">
+                            {{ __('Categorías') }}
+                        </x-nav-link>
+                    </li>
+                @endif
             </ul>
 
             <div class="d-flex align-items-center mt-3 mt-md-0">

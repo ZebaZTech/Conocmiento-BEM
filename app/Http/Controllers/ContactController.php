@@ -9,7 +9,13 @@ class ContactController extends Controller
 {
     public function store(StoreContactMessageRequest $request)
     {
-        ContactMessage::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->user()) {
+            $data['user_id'] = $request->user()->id;
+        }
+
+        ContactMessage::create($data);
 
         return redirect()->route('contacto')->with('status', 'Mensaje enviado. Te respondemos pronto.');
     }

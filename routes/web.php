@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -35,9 +36,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('plans', PlanController::class);
     Route::resource('testimonials', TestimonialController::class);
+    Route::resource('categories', CategoryController::class);
     Route::resource('contact-messages', ContactMessageController::class)
         ->only(['index', 'show', 'destroy'])
         ->parameters(['contact-messages' => 'contactMessage']);
