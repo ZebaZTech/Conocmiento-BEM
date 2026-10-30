@@ -7,7 +7,6 @@ use App\Models\FocusSession;
 use App\Models\Plan;
 use App\Models\Task;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -115,25 +114,33 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        $sessionStart = Carbon::parse('2026-10-20 08:00:00');
+        FocusSession::where('user_id', $demo->id)->delete();
 
-        Task::where('user_id', $demo->id)
-            ->orderBy('id')
-            ->get()
-            ->each(function (Task $task, int $index) use ($demo, $sessionStart) {
-                foreach ([0, 1] as $offset) {
-                    FocusSession::updateOrCreate(
-                        [
-                            'user_id' => $demo->id,
-                            'task_id' => $task->id,
-                            'started_at' => $sessionStart->copy()->addDays($index)->addHours($offset * 2),
-                        ],
-                        [
-                            'minutes' => 25,
-                            'completed' => true,
-                        ]
-                    );
-                }
-            });
+        $demoTasks = Task::where('user_id', $demo->id)->orderBy('id')->get()->values();
+
+        $sessionPlan = [
+            ['days_ago' => 6, 'task' => 0, 'minutes' => 25, 'completed' => true],
+            ['days_ago' => 5, 'task' => 1, 'minutes' => 50, 'completed' => true],
+            ['days_ago' => 4, 'task' => 2, 'minutes' => 25, 'completed' => true],
+            ['days_ago' => 3, 'task' => 3, 'minutes' => 25, 'completed' => false],
+            ['days_ago' => 2, 'task' => 4, 'minutes' => 15, 'completed' => true],
+            ['days_ago' => 1, 'task' => 0, 'minutes' => 50, 'completed' => true],
+            ['days_ago' => 0, 'task' => 1, 'minutes' => 25, 'completed' => true],
+            ['days_ago' => 0, 'task' => 2, 'minutes' => 15, 'completed' => true],
+            ['days_ago' => 2, 'task' => 3, 'minutes' => 25, 'completed' => true],
+            ['days_ago' => 1, 'task' => 4, 'minutes' => 25, 'completed' => false],
+        ];
+
+        foreach ($sessionPlan as $index => $session) {
+            $task = $demoTasks[$session['task'] % $demoTasks->count()];
+
+            FocusSession::create([
+                'user_id' => $demo->id,
+                'task_id' => $task->id,
+                'minutes' => $session['minutes'],
+                'completed' => $session['completed'],
+                'started_at' => now()->subDays($session['days_ago'])->setTime(8 + ($index % 8), 0),
+            ]);
+        }
     }
 }

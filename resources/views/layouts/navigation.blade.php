@@ -15,6 +15,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </li>
+                <li class="nav-item">
+                    <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">
+                        {{ __('Mis tareas') }}
+                    </x-nav-link>
+                </li>
+                <li class="nav-item">
+                    <x-nav-link :href="route('focus.index')" :active="request()->routeIs('focus.*')">
+                        {{ __('Enfoque') }}
+                    </x-nav-link>
+                </li>
                 @if (auth()->user()->is_admin)
                     <li class="nav-item">
                         <x-nav-link :href="route('admin.plans.index')" :active="request()->routeIs('admin.plans.*')">

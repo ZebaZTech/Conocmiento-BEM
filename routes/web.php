@@ -5,7 +5,10 @@ use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FocusSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,9 +35,15 @@ Route::post('/contacto', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('contacto.store');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    Route::resource('tasks', TaskController::class);
+    Route::patch('tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+
+    Route::get('/focus', [FocusSessionController::class, 'index'])->name('focus.index');
+    Route::post('/focus-sessions', [FocusSessionController::class, 'store'])->name('focus-sessions.store');
+});
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('plans', PlanController::class);
