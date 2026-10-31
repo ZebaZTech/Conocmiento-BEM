@@ -5,5 +5,11 @@
         <li class="nav__item"><a href="{{ route('opiniones') }}" class="nav__link {{ request()->routeIs('opiniones') ? 'nav__link--active' : '' }}">Opiniones</a></li>
         <li class="nav__item"><a href="{{ route('planes') }}" class="nav__link {{ request()->routeIs('planes') ? 'nav__link--active' : '' }}">Planes</a></li>
         <li class="nav__item"><a href="#" class="nav__link nav__link--disabled" aria-disabled="true">Blog</a></li>
+        @guest
+            <li class="nav__item"><a href="{{ route('login') }}" class="nav__link {{ request()->routeIs('login') ? 'nav__link--active' : '' }}">Iniciar sesión</a></li>
+            <li class="nav__item"><a href="{{ route('register') }}" class="button button--small">Registrarse</a></li>
+        @else
+            <li class="nav__item"><a href="{{ route('dashboard') }}" class="nav__link {{ request()->routeIs('dashboard') ? 'nav__link--active' : '' }}">Mi panel</a></li>
+        @endguest
     </ul>
 </nav>
