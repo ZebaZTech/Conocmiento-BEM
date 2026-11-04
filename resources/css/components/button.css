@@ -9,12 +9,13 @@
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .button:hover {
   background: var(--color-accent);
   border-color: var(--color-accent);
+  color: var(--color-bg);
 }
 
 .button--small {
@@ -29,11 +30,12 @@
 
 .button--outline {
   background: transparent;
-  color: var(--color-primary);
+  border-color: var(--color-blue-light);
+  color: var(--color-blue-light);
 }
 
 .button--outline:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  background: var(--color-blue-light);
+  border-color: var(--color-blue-light);
+  color: var(--color-bg);
 }

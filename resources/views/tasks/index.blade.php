@@ -16,7 +16,7 @@
         ];
         $statusClasses = [
             'pendiente' => 'bg-secondary',
-            'en_progreso' => 'bg-warning text-dark',
+            'en_progreso' => 'text-bg-warning',
             'hecha' => 'bg-success',
         ];
     @endphp
@@ -63,7 +63,7 @@
                                     @if ($task->category)
                                         <span class="badge" style="background-color: {{ $task->category->color ?? '#6c757d' }};">{{ $task->category->name }}</span>
                                     @else
-                                        <span class="badge bg-light text-secondary">Sin categoría</span>
+                                        <span class="badge bg-secondary">Sin categoría</span>
                                     @endif
                                 </td>
                                 <td>

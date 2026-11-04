@@ -11,15 +11,17 @@
   border-bottom: 2px solid transparent;
   color: var(--color-text);
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .nav__link:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-blue-light);
+  color: var(--color-blue-light);
 }
 
 .nav__link--active {
-  border-color: var(--color-primary);
+  border-color: var(--color-blue-light);
+  color: var(--color-blue-light);
   font-weight: 600;
 }
 

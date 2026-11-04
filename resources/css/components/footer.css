@@ -1,7 +1,8 @@
 .footer {
   padding-top: 3rem;
-  background: #222;
-  color: white;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
 }
 
 .footer__inner {
@@ -13,8 +14,8 @@
 
 .footer__contact {
   margin-top: 1rem;
+  color: var(--color-muted);
   font-style: normal;
-  opacity: 0.85;
 }
 
 .footer__links {
@@ -26,19 +27,19 @@
 }
 
 .footer__link {
-  color: white;
+  color: var(--color-text);
   text-decoration: none;
 }
 
 .footer__link:hover {
-  color: var(--color-accent);
+  color: var(--color-blue-light);
 }
 
 .footer__copy {
   margin: 2.5rem 0 0;
   padding: 1.25rem 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
   font-size: 0.85rem;
   text-align: center;
-  opacity: 0.8;
 }

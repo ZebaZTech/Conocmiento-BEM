@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-md border-bottom">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
             <x-application-logo class="navbar-brand-logo" aria-hidden="true" />
@@ -59,7 +59,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('profile.edit')" class="d-flex align-items-center gap-2">
+                            <x-icon name="user" size="18" />
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -67,8 +68,10 @@
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
+                                    class="d-flex align-items-center gap-2"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
+                                <x-icon name="logout" size="18" />
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>

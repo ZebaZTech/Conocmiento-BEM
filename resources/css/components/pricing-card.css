@@ -4,9 +4,10 @@
   flex-direction: column;
   gap: 1.25rem;
   padding: 2rem;
-  background: white;
-  border: 2px solid transparent;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 8px;
+  color: var(--color-text);
 }
 
 .pricing-card__name {
@@ -21,9 +22,9 @@
 }
 
 .pricing-card__period {
+  color: var(--color-muted);
   font-size: 1rem;
   font-weight: 400;
-  opacity: 0.7;
 }
 
 .pricing-card__list {
@@ -37,7 +38,7 @@
 
 .pricing-card__item::before {
   content: "✓ ";
-  color: var(--color-primary);
+  color: var(--color-blue-light);
   font-weight: 700;
 }
 
@@ -57,13 +58,13 @@
   padding: 0.15rem 0.8rem;
   border-radius: 99px;
   background: var(--color-accent);
-  color: white;
+  color: var(--color-bg);
   font-size: 0.8rem;
   font-weight: 600;
 }
 
 .pricing-card--recommended {
-  border-color: var(--color-primary);
+  border-color: var(--color-blue-light);
   transform: translateY(-8px);
 }
 

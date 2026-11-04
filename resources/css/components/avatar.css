@@ -20,4 +20,5 @@
 .avatar--alt {
   background: var(--color-accent);
   border-radius: 30%;
+  color: var(--color-bg);
 }

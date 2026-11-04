@@ -1,9 +1,17 @@
 :root {
   --color-primary: #2b3fc0;
   --color-accent: #ffd500;
-  --color-bg: #ffffff;
-  --color-text: #000000;
+  --color-bg: #0b0e14;
+  --color-text: #e8ecf5;
+  --color-surface: #141925;
+  --color-surface-2: #1b2232;
+  --color-border: #2a3247;
+  --color-muted: #9aa6c0;
+  --color-blue-light: #7b8cff;
+  --color-danger: #ff9b9b;
+  --color-success: #b7f0c8;
   --font-main: Arial;
+  color-scheme: dark;
 }
 
 *, *::before, *::after {
@@ -13,6 +21,26 @@
 body.page {
   margin: 0;
   font-family: var(--font-main);
- color: var(--color-text);
- background: var(--color-bg);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a {
+  color: var(--color-blue-light);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue-light);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
