@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('dashboard') }}">
-            <x-application-logo class="text-dark" style="height: 36px; width: auto;" />
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
+            <x-application-logo class="navbar-brand-logo" aria-hidden="true" />
+            <span>Focus Work</span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Alternar navegación">

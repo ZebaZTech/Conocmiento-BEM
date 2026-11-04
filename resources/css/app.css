@@ -1,1 +1,91 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --fw-blue: #2b3fc0;
+  --fw-blue-dark: #22329a;
+  --fw-yellow: #ffd500;
+  --fw-gradient: linear-gradient(135deg, #2b3fc0, #5a1810);
+  --fw-ink: #000000;
+  --fw-soft: #f3f5fb;
+  --fw-radius: 16px;
+
+  --bs-primary: var(--fw-blue);
+  --bs-primary-rgb: 43, 63, 192;
+  --bs-link-color: var(--fw-blue);
+  --bs-link-hover-color: var(--fw-blue-dark);
+  --bs-body-font-family: Arial, sans-serif;
+  --bs-body-color: var(--fw-ink);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--fw-blue);
+  --bs-btn-border-color: var(--fw-blue);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--fw-blue-dark);
+  --bs-btn-hover-border-color: var(--fw-blue-dark);
+  --bs-btn-focus-shadow-rgb: 43, 63, 192;
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: var(--fw-blue-dark);
+  --bs-btn-active-border-color: var(--fw-blue-dark);
+  --bs-btn-disabled-color: var(--bs-white);
+  --bs-btn-disabled-bg: var(--fw-blue);
+  --bs-btn-disabled-border-color: var(--fw-blue);
+  --bs-btn-border-radius: var(--fw-radius);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--fw-blue);
+  --bs-btn-border-color: var(--fw-blue);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--fw-blue);
+  --bs-btn-hover-border-color: var(--fw-blue);
+  --bs-btn-focus-shadow-rgb: 43, 63, 192;
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: var(--fw-blue-dark);
+  --bs-btn-active-border-color: var(--fw-blue-dark);
+  --bs-btn-disabled-color: var(--fw-blue);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--fw-blue);
+  --bs-btn-border-radius: var(--fw-radius);
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-color: var(--bs-white);
+  --bs-nav-pills-link-active-bg: var(--fw-blue);
+}
+
+.nav-pills .nav-link.active {
+  color: var(--bs-white);
+  background-color: var(--fw-blue);
+}
+
+.form-control:focus {
+  border-color: var(--fw-blue);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--fw-blue);
+  border-color: var(--fw-blue);
+}
+
+.navbar {
+  --bs-navbar-brand-color: var(--fw-blue);
+  --bs-navbar-brand-hover-color: var(--fw-blue);
+  --bs-navbar-active-color: var(--fw-blue);
+  background-color: var(--bs-white);
+}
+
+.navbar-brand {
+  font-weight: 800;
+}
+
+.navbar-brand-logo {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: 600;
+}

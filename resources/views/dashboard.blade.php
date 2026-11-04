@@ -73,7 +73,7 @@
                                 <span>{{ $taskStatusCounts[$status] }} de {{ $totalTasks }}</span>
                             </div>
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar" role="progressbar" style="width: {{ $taskStatusPercentages[$status] }}%;" aria-valuenow="{{ $taskStatusPercentages[$status] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar {{ $statusClasses[$status] }}" role="progressbar" style="width: {{ $taskStatusPercentages[$status] }}%;" aria-valuenow="{{ $taskStatusPercentages[$status] }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     @endforeach
@@ -92,7 +92,7 @@
                                 <span>{{ $day['minutes'] }} min</span>
                             </div>
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: {{ $day['percent'] }}%;" aria-valuenow="{{ $day['percent'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $day['percent'] }}%;" aria-valuenow="{{ $day['percent'] }}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     @endforeach

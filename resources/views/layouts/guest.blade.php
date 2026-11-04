@@ -10,15 +10,12 @@
         <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
         <link rel="alternate icon" href="{{ asset('favicon.ico') }}">
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-light">
         <div class="min-vh-100 d-flex flex-column justify-content-center align-items-center py-4">
             <a href="/" class="mb-3">
-                <x-application-logo class="text-secondary" style="width: 72px; height: 72px;" />
+                <x-application-logo class="text-primary" style="width: 72px; height: 72px;" />
             </a>
 
             <div class="card shadow-sm w-100" style="max-width: 28rem;">

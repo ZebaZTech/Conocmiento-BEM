@@ -2,7 +2,7 @@
     <div class="footer__inner container">
         <div class="footer__col">
             <a href="{{ route('home') }}" class="logo logo--light">
-                <span class="logo__mark">⏱</span>
+                <x-application-logo class="logo__mark" aria-hidden="true" />
                 <span class="logo__text">Focus Work</span>
             </a>
             <address class="footer__contact">
@@ -18,9 +18,9 @@
         </ul>
 
         <ul class="social">
-            <li class="social__item"><a href="#" class="social__link" aria-label="Instagram">IG</a></li>
-            <li class="social__item"><a href="#" class="social__link" aria-label="LinkedIn">IN</a></li>
-            <li class="social__item"><a href="#" class="social__link" aria-label="X">X</a></li>
+            <li class="social__item"><span class="social__link" aria-label="Instagram">IG</span></li>
+            <li class="social__item"><span class="social__link" aria-label="LinkedIn">IN</span></li>
+            <li class="social__item"><span class="social__link" aria-label="X">X</span></li>
         </ul>
     </div>
 
