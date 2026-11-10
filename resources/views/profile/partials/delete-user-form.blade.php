@@ -4,9 +4,16 @@
             {{ __('Delete Account') }}
         </h2>
 
-        <p class="text-secondary mb-0">
+        <p class="text-secondary mb-2">
             {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
         </p>
+
+        <ul class="text-secondary mb-0">
+            <li>Se borran tus tareas y sesiones de enfoque.</li>
+            <li>Tus testimonios y mensajes de contacto se anonimizan.</li>
+            <li>Se conserva un registro de auditoría sin datos personales.</li>
+            <li>La acción no se puede deshacer.</li>
+        </ul>
     </header>
 
     <x-danger-button
@@ -31,6 +38,28 @@
                 <p class="text-secondary">
                     {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
                 </p>
+
+                @if ($errors->userDeletion->get('admin'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ $errors->userDeletion->first('admin') }}
+                    </div>
+                @endif
+
+                <div class="form-check mb-3">
+                    <input
+                        class="form-check-input @if ($errors->userDeletion->get('confirm_deletion')) is-invalid @endif"
+                        id="confirm_deletion"
+                        name="confirm_deletion"
+                        type="checkbox"
+                        value="1"
+                        required
+                    >
+                    <label class="form-check-label" for="confirm_deletion">
+                        Entiendo que esta acción es permanente
+                    </label>
+
+                    <x-input-error :messages="$errors->userDeletion->get('confirm_deletion')" class="mt-1" />
+                </div>
 
                 <div class="mb-3">
                     <x-input-label for="password" value="{{ __('Password') }}" class="visually-hidden" />

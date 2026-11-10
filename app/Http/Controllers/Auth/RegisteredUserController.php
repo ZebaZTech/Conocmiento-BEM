@@ -38,6 +38,9 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'plan_id' => ['nullable', 'integer', 'exists:plans,id'],
+            'privacy' => ['required', 'accepted'],
+        ], [
+            'privacy.accepted' => 'Debes aceptar la política de tratamiento de datos personales.',
         ]);
 
         $planId = $request->input('plan_id');
@@ -61,6 +64,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'plan_id' => $planId,
+            'privacy_accepted_at' => now(),
+            'privacy_policy_version' => config('app.privacy_policy_version', '1.0'),
         ]);
 
         event(new Registered($user));

@@ -1,6 +1,12 @@
 @extends('layouts.public')
 
 @section('content')
+    @if(session('status'))
+      <div class="container container--narrow">
+        <p class="status" role="status">{{ session('status') }}</p>
+      </div>
+    @endif
+
     <section class="hero" id="inicio">
       <div class="hero__content container">
         <div class="hero__body">

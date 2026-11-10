@@ -21,6 +21,12 @@
 
             <div class="card mb-4">
                 <div class="card-body">
+                    @include('profile.partials.personal-data')
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>

@@ -62,6 +62,7 @@ test('contact form stores a message', function () {
         'name' => 'Carlos Ruiz',
         'email' => 'carlos@example.com',
         'message' => 'Quiero saber más sobre Focus Work.',
+        'privacy' => true,
     ]);
 
     $response->assertRedirect(route('contacto'));
@@ -80,6 +81,7 @@ test('contact form stores the authenticated user id', function () {
         'name' => 'Usuario Autenticado',
         'email' => 'autenticado@example.com',
         'message' => 'Mensaje con sesión iniciada.',
+        'privacy' => true,
     ]);
 
     $this->assertDatabaseHas('contact_messages', [

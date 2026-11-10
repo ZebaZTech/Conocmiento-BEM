@@ -10,6 +10,7 @@ class ContactController extends Controller
     public function store(StoreContactMessageRequest $request)
     {
         $data = $request->validated();
+        $data['privacy_accepted_at'] = now();
 
         if ($request->user()) {
             $data['user_id'] = $request->user()->id;

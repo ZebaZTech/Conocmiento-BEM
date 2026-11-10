@@ -37,6 +37,16 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
         </div>
 
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input @error('privacy') is-invalid @enderror" id="privacy" name="privacy" type="checkbox" value="1" required>
+                <label class="form-check-label" for="privacy">
+                    Acepto la <a href="{{ route('privacidad') }}" target="_blank" rel="noopener">política de tratamiento de datos personales</a>
+                </label>
+                <x-input-error :messages="$errors->get('privacy')" class="mt-1" />
+            </div>
+        </div>
+
         <div class="d-flex justify-content-between align-items-center">
             <a class="link-secondary" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

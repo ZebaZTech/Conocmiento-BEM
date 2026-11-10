@@ -29,6 +29,14 @@
             <p class="form__error">@error('message'){{ $message }}@else Cuéntanos en qué podemos ayudarte.@enderror</p>
           </div>
 
+          <div class="form__field form__field--check @error('privacy') form__field--error @enderror">
+            <input class="form__checkbox" id="privacidad" name="privacy" type="checkbox" value="1" required>
+            <label class="form__check-label" for="privacidad">
+              Acepto la <a href="{{ route('privacidad') }}">política de tratamiento de datos personales</a>
+            </label>
+            <p class="form__error">@error('privacy'){{ $message }}@else Debes aceptar la política de tratamiento de datos personales.@enderror</p>
+          </div>
+
           <button type="submit" class="button form__submit">Enviar mensaje</button>
         </form>
       </div>
@@ -37,8 +45,16 @@
       document.querySelector('.form').addEventListener('submit', function (e) {
         var todoOk = true;
         this.querySelectorAll('.form__field').forEach(function (campo) {
-          var input = campo.querySelector('.form__input');
-          var invalido = !input.checkValidity() || !input.value.trim();
+          var input = campo.querySelector('input');
+          if (!input) {
+            return;
+          }
+          var invalido;
+          if (input.type === 'checkbox') {
+            invalido = !input.checked;
+          } else {
+            invalido = !input.checkValidity() || !input.value.trim();
+          }
           campo.classList.toggle('form__field--error', invalido);
           if (invalido) todoOk = false;
         });

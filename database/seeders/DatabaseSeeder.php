@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'plan_id' => $freePlan?->id,
                 'is_admin' => true,
+                'privacy_accepted_at' => now(),
+                'privacy_policy_version' => config('app.privacy_policy_version', '1.0'),
             ]
         );
 
@@ -43,6 +45,8 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'plan_id' => $proPlan?->id,
                 'is_admin' => false,
+                'privacy_accepted_at' => now(),
+                'privacy_policy_version' => config('app.privacy_policy_version', '1.0'),
             ]
         );
 

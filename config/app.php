@@ -123,4 +123,16 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Privacy Policy Version
+    |--------------------------------------------------------------------------
+    |
+    | The current version of the personal data processing policy shown to the
+    | users and stored when they accept it.
+    |
+    */
+
+    'privacy_policy_version' => '1.0',
+
 ];

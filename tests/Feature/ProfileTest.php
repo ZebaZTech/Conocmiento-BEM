@@ -57,11 +57,13 @@ test('user can delete their account', function () {
         ->actingAs($user)
         ->delete('/profile', [
             'password' => 'password',
+            'confirm_deletion' => true,
         ]);
 
     $response
         ->assertSessionHasNoErrors()
-        ->assertRedirect('/');
+        ->assertRedirect('/')
+        ->assertSessionHas('status', 'Tu cuenta y tus datos personales fueron eliminados.');
 
     $this->assertGuest();
     $this->assertNull($user->fresh());
@@ -75,6 +77,7 @@ test('correct password must be provided to delete account', function () {
         ->from('/profile')
         ->delete('/profile', [
             'password' => 'wrong-password',
+            'confirm_deletion' => true,
         ]);
 
     $response

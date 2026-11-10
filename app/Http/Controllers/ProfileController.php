@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
+use App\Services\AccountDeletionService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -40,21 +43,30 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request, AccountDeletionService $deletion): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
+            'confirm_deletion' => ['required', 'accepted'],
+        ], [
+            'confirm_deletion.accepted' => 'Debes confirmar que entiendes que esta acción es permanente.',
         ]);
 
         $user = $request->user();
 
+        if ($user->is_admin && User::where('is_admin', true)->count() <= 1) {
+            throw ValidationException::withMessages([
+                'admin' => 'No puedes eliminar tu cuenta porque eres el único administrador. Asigna el rol de administrador a otro usuario antes de eliminarla.',
+            ])->errorBag('userDeletion');
+        }
+
         Auth::logout();
 
-        $user->delete();
+        $deletion->delete($user);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('status', 'Tu cuenta y tus datos personales fueron eliminados.');
     }
 }

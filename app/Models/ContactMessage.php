@@ -15,7 +15,15 @@ class ContactMessage extends Model
         'name',
         'email',
         'message',
+        'privacy_accepted_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'privacy_accepted_at' => 'datetime',
+        ];
+    }
 
     public function user(): BelongsTo
     {

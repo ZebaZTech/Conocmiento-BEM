@@ -27,6 +27,10 @@ Route::get('/planes', function () {
     return view('pages.planes');
 })->name('planes');
 
+Route::get('/politica-de-privacidad', function () {
+    return view('pages.privacidad');
+})->name('privacidad');
+
 Route::get('/contacto', function () {
     return view('pages.contacto');
 })->name('contacto');

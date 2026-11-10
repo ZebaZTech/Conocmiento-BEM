@@ -15,6 +15,7 @@
             <li><a href="{{ route('caracteristicas') }}" class="footer__link">Características</a></li>
             <li><a href="{{ route('planes') }}" class="footer__link">Planes</a></li>
             <li><a href="{{ route('contacto') }}" class="footer__link">Contacto</a></li>
+            <li><a href="{{ route('privacidad') }}" class="footer__link">Política de privacidad</a></li>
         </ul>
 
         <ul class="social">

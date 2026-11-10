@@ -62,3 +62,31 @@
 .form__submit {
   justify-self: start;
 }
+
+.form__field--check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 0.5rem;
+}
+
+.form__checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  accent-color: var(--color-primary);
+}
+
+.form__check-label {
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.form__field--check .form__error {
+  grid-column: 1 / -1;
+}
+
+.form__field--error .form__checkbox {
+  outline: 2px solid var(--color-danger);
+  outline-offset: 2px;
+}
