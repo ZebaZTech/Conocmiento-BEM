@@ -6,7 +6,7 @@
                 <span class="logo__text">Focus Work</span>
             </a>
             <address class="footer__contact">
-                hola@focuswork.com<br>
+                sebas.mbz527@gmail.com<br>
                 +57 300 000 0000
             </address>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\WelcomeMail;
 use App\Models\Plan;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -10,9 +11,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Throwable;
 
 class RegisteredUserController extends Controller
 {
@@ -67,6 +70,12 @@ class RegisteredUserController extends Controller
             'privacy_accepted_at' => now(),
             'privacy_policy_version' => config('app.privacy_policy_version', '1.0'),
         ]);
+
+        try {
+            Mail::to($user->email)->send(new WelcomeMail($user));
+        } catch (Throwable $e) {
+            report($e);
+        }
 
         event(new Registered($user));
 

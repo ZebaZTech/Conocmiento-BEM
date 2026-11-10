@@ -19,7 +19,7 @@
               El responsable del tratamiento de tus datos personales es <strong>Sebastián Muñoz Bermúdez</strong>,
               responsable del proyecto académico <strong>Focus Work</strong>, disponible en el sitio
               <strong>focuswork.website</strong>. Puedes escribirle al correo
-              <a href="mailto:hola@focuswork.com">hola@focuswork.com</a> para cualquier consulta sobre tus datos.
+              <a href="mailto:sebas.mbz527@gmail.com">sebas.mbz527@gmail.com</a> para cualquier consulta sobre tus datos.
             </p>
           </section>
 
@@ -71,9 +71,10 @@
             <h2 class="policy__heading">Cómo ejercer tus derechos</h2>
             <p class="policy__text">
               Puedes ejercerlos de dos formas: escribiendo al correo
-              <a href="mailto:hola@focuswork.com">hola@focuswork.com</a> o, si tienes cuenta, usando la opción de
-              eliminación disponible en tu perfil, que suprime tus datos personales de forma inmediata. Responderemos
-              tus solicitudes en un plazo máximo de quince (15) días hábiles.
+              <a href="mailto:sebas.mbz527@gmail.com">sebas.mbz527@gmail.com</a> o, si tienes cuenta, usando la opción de
+              eliminación disponible en tu perfil, que suprime tus datos personales de forma inmediata. Atenderemos las
+              consultas en un plazo máximo de diez (10) días hábiles y los reclamos en un plazo máximo de quince (15)
+              días hábiles, contados desde la fecha de recibo.
             </p>
           </section>
 

@@ -28,7 +28,7 @@
 
         <dt class="col-sm-5 col-lg-4">Ejercer tus derechos</dt>
         <dd class="col-sm-7 col-lg-8">
-            Escríbenos a <a href="mailto:hola@focuswork.com">hola@focuswork.com</a> para conocer, actualizar o
+            Escríbenos a <a href="mailto:sebas.mbz527@gmail.com">sebas.mbz527@gmail.com</a> para conocer, actualizar o
             rectificar tus datos, o usa el botón «Eliminar cuenta» de esta página para suprimirlos de forma
             permanente.
         </dd>
