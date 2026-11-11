@@ -56,6 +56,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('contact-messages', ContactMessageController::class)
         ->only(['index', 'show', 'destroy'])
         ->parameters(['contact-messages' => 'contactMessage']);
+
+    Route::get('sentry-test', function () {
+        throw new RuntimeException('Evento de prueba de Sentry desde Focus Work');
+    })->name('sentry-test');
 });
 
 Route::middleware('auth')->group(function () {
