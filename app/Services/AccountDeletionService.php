@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\AccountDeletion;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AccountDeletionService
 {
@@ -14,6 +15,8 @@ class AccountDeletionService
      */
     public function delete(User $user): void
     {
+        $profilePhotoPath = $user->profile_photo_path;
+
         DB::transaction(function () use ($user): void {
             $user->testimonials()->update([
                 'name' => 'Usuario eliminado',
@@ -35,5 +38,9 @@ class AccountDeletionService
 
             $user->delete();
         });
+
+        if ($profilePhotoPath) {
+            Storage::disk('s3')->delete($profilePhotoPath);
+        }
     }
 }

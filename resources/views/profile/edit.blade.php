@@ -15,6 +15,12 @@
 
             <div class="card mb-4">
                 <div class="card-body">
+                    @include('profile.partials.update-profile-photo-form')
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
                     @include('profile.partials.update-password-form')
                 </div>
             </div>

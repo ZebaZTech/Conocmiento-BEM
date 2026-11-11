@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
@@ -38,6 +39,35 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    }
+
+    /**
+     * Update the user's profile photo.
+     */
+    public function updatePhoto(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'photo' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
+        ]);
+
+        $user = $request->user();
+        $disk = Storage::disk('s3');
+
+        if ($user->profile_photo_path) {
+            $disk->delete($user->profile_photo_path);
+        }
+
+        $path = $request->file('photo')->store('profile-photos', 's3');
+
+        if ($path === false) {
+            throw ValidationException::withMessages([
+                'photo' => 'No se pudo guardar la foto. Inténtalo de nuevo.',
+            ]);
+        }
+
+        $user->update(['profile_photo_path' => $path]);
+
+        return Redirect::route('profile.edit')->with('status', 'profile-photo-updated');
     }
 
     /**
