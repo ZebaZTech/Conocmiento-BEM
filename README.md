@@ -306,12 +306,6 @@ php artisan serve
 
 La aplicación queda disponible en http://localhost:8000. Si usas `npm run dev`, déjalo corriendo en otra terminal.
 
-## Usuarios de prueba
-
-| Rol | Correo | Contraseña |
-| --- | --- | --- |
-| Administrador | test@example.com | password |
-| Usuario normal | demo@example.com | password |
 
 ## Pruebas
 
