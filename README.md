@@ -344,6 +344,83 @@ Variables de entorno necesarias (sin valores secretos):
 
 Render asigna el puerto mediante `PORT`, que `docker/start.sh` usa para configurar Apache.
 
+## Better Stack (monitoreo de disponibilidad)
+
+Better Stack es el servicio externo usado para vigilar la disponibilidad de Focus Work en producción.
+
+- **Monitor:** HTTP/HTTPS sobre `https://focuswork.website`.
+- **Frecuencia:** una revisión cada 3 minutos.
+- **Alertas:** notificación por correo electrónico cuando el monitor detecta una caída.
+- **Estado actual:** el monitor aparece como **Up**.
+
+Para comprobar la detección y la alerta se creó un incidente de prueba (de muestra) que simuló una caída; el monitor pasó a estado de fallo y se recibió la alerta por correo.
+
+Esta integración no requiere código ni variables de entorno: se configura únicamente en el panel de Better Stack.
+
+Laravel registra la ruta de salud `/up` en `bootstrap/app.php` (`health: '/up'`), por lo que también puede usarse como health check HTTP si se necesita una verificación más ligera que la página principal.
+
+### Capturas
+
+![Monitor en estado Up](docs/evidencias/betterstack-monitor-up.png)
+
+![Incidente de prueba](docs/evidencias/betterstack-incidente.png)
+
+![Configuración del monitor](docs/evidencias/betterstack-configuracion.png)
+
+## Backblaze B2 (almacenamiento externo, protocolo S3)
+
+Las fotos de perfil se almacenan en Backblaze B2 mediante el disco `s3` de Laravel, que utiliza el paquete `league/flysystem-aws-s3-v3` (declarado en `composer.json`).
+
+### Configuración del bucket
+
+- Bucket **privado** con cifrado por defecto.
+- Clave de aplicación limitada a ese bucket, con permisos de lectura y escritura.
+
+### Disco `s3`
+
+`config/filesystems.php` define el disco `s3` con el driver `s3`, leyendo las credenciales y el endpoint desde variables de entorno:
+
+| Variable | Para qué sirve |
+| --- | --- |
+| `FILESYSTEM_DISK` | Disco por defecto de Laravel (`local` en desarrollo, `s3` en producción). |
+| `AWS_ACCESS_KEY_ID` | Identificador de la clave de aplicación de Backblaze B2. |
+| `AWS_SECRET_ACCESS_KEY` | Clave secreta de la aplicación de Backblaze B2. |
+| `AWS_DEFAULT_REGION` | Región del bucket en Backblaze B2. |
+| `AWS_BUCKET` | Nombre del bucket donde se guardan los archivos. |
+| `AWS_ENDPOINT` | Endpoint S3 de Backblaze B2 para la región del bucket. |
+| `AWS_USE_PATH_STYLE_ENDPOINT` | Usa estilo de ruta (`true`) o estilo virtual-host (`false`) en las URLs del endpoint. |
+| `AWS_REQUEST_CHECKSUM_CALCULATION` | Cálculo de checksums en las peticiones; Backblaze B2 requiere `when_required`. |
+| `AWS_RESPONSE_CHECKSUM_VALIDATION` | Validación de checksums en las respuestas; Backblaze B2 requiere `when_required`. |
+
+Las credenciales se configuran en las variables de entorno de Render y nunca se guardan en el repositorio; `.env.example` solo incluye los nombres de las variables, sin valores reales.
+
+En desarrollo local sobre Windows puede definirse opcionalmente `AWS_CA_BUNDLE` con la ruta al archivo `cacert.pem`. `config/filesystems.php` la usa en la opción `verify` del cliente HTTP del disco `s3`; no es necesaria en producción.
+
+### Foto de perfil
+
+- La subida se gestiona en `ProfileController::updatePhoto` (ruta `POST /profile/photo`).
+- Se valida que el archivo sea una imagen `jpg`, `jpeg`, `png` o `webp` de máximo 2 MB.
+- El archivo se guarda en la carpeta `profile-photos/` del disco `s3` y su ruta se persiste en `users.profile_photo_path`.
+- El accessor `User::profile_photo_url` devuelve una URL temporal de 30 minutos (`temporaryUrl`) porque el bucket es privado, o `null` si el usuario no tiene foto.
+
+### Privacidad (Ley 1581 de 2012)
+
+Al reemplazar la foto, `updatePhoto` borra del bucket el archivo anterior antes de guardar el nuevo. Al eliminar la cuenta, `AccountDeletionService` borra la foto del bucket después de completar la transacción que elimina o anonimiza los datos del usuario.
+
+> **Nota sobre versionado:** Backblaze B2 conserva versiones de los archivos. La aplicación elimina el objeto actual, pero B2 mantiene la versión anterior oculta hasta que se borre manualmente o mediante una regla de ciclo de vida. Las versiones anteriores no se eliminan de forma definitiva con el borrado de la aplicación.
+
+### Verificación
+
+La integración se comprobó con una prueba desde `tinker`, con una subida en local y otra en producción, y verificando que el archivo aparece en el bucket.
+
+### Capturas
+
+![Archivos en el bucket](docs/evidencias/backblaze-bucket-archivos.png)
+
+![Clave de aplicación limitada al bucket](docs/evidencias/backblaze-application-key.png)
+
+![Foto de perfil en producción](docs/evidencias/app-foto-perfil-produccion.png)
+
 ## Capturas de pantalla
 
 ### Landing
